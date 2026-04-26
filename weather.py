@@ -1,19 +1,13 @@
 import os
+from dotenv import load_dotenv
 
-WEATHER_API_KEY="super-secret-api-key"
+load_dotenv()  # Load variables from .env file
 
-def get_weather(city: str) -> str:
+def get_weather(city):
     api_key = os.getenv("WEATHER_API_KEY")
     if not api_key:
-        raise RuntimeError("Missing WEATHER_API_KEY")
-
-    # Simulate using the secret
-    print("Authenticating with API key...")
-    
-    # Fake response
-    return f"The weather in {city} is sunny ☀️"
-
-if __name__ == "__main__":
-    city = "Bangalore"
-    weather = get_weather(city)
-    print(weather)
+        raise ValueError("WEATHER_API_KEY not set in environment variables")
+    url = f"https://api.weather.com/v3/weather/conditions?city={city}&apiKey={api_key}"
+    # TODO: Add request handling and response parsing
+    # Placeholder return
+    return url
