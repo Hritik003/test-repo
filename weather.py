@@ -1,7 +1,19 @@
 import os
-import requests
 
-WEATHER_API_KEY = os.getenv('WEATHER_API_KEY')
+WEATHER_API_KEY="super-secret-api-key"
 
-# Rest of the original code (placeholder)
-# TODO: Add the original implementation here
+def get_weather(city: str) -> str:
+    api_key = os.getenv("WEATHER_API_KEY")
+    if not api_key:
+        raise RuntimeError("Missing WEATHER_API_KEY")
+
+    # Simulate using the secret
+    print("Authenticating with API key...")
+    
+    # Fake response
+    return f"The weather in {city} is sunny ☀️"
+
+if __name__ == "__main__":
+    city = "Bangalore"
+    weather = get_weather(city)
+    print(weather)
