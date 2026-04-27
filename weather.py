@@ -1,7 +1,7 @@
 import os
-import requests
 
-WEATHER_API_KEY = os.getenv('WEATHER_API_KEY')
+WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
 
-# Rest of the original code (placeholder)
-# TODO: Add the original implementation here
+def get_weather(city):
+    # code to get weather
+    pass
