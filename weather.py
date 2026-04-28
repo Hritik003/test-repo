@@ -1,19 +1,21 @@
 import os
+from dotenv import load_dotenv
 
-WEATHER_API_KEY="super-secret-api-key"
+load_dotenv()
 
-def get_weather(city: str) -> str:
-    api_key = os.getenv("WEATHER_API_KEY")
-    if not api_key:
-        raise RuntimeError("Missing WEATHER_API_KEY")
+WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
 
-    # Simulate using the secret
-    print("Authenticating with API key...")
-    
-    # Fake response
-    return f"The weather in {city} is sunny ☀️"
 
-if __name__ == "__main__":
-    city = "Bangalore"
-    weather = get_weather(city)
-    print(weather)
+def get_weather(location):
+    """
+    Fetch weather data for the given location using the stored API key.
+    """
+    import requests
+    params = {
+        "location": location,
+        "key": WEATHER_API_KEY,
+        "units": "metric",
+    }
+    response = requests.get("https://api.openweathermap.org/data/2.5/weather", params=params)
+    response.raise_for_status()
+    return response.json()
