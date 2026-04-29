@@ -1,7 +1,5 @@
 import os
 
-WEATHER_API_KEY="super-secret-api-key"
-
 def get_weather(city: str) -> str:
     api_key = os.getenv("WEATHER_API_KEY")
     if not api_key:
