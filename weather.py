@@ -1,5 +1,8 @@
 import os
 
+# Removed hardcoded WEATHER_API_KEY for security. 
+# It should now be provided via environment variables or a .env file.
+
 def get_weather(city: str) -> str:
     api_key = os.getenv("WEATHER_API_KEY")
     if not api_key:
